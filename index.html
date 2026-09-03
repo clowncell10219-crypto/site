@@ -1,20 +1,167 @@
 <!DOCTYPE html>
-<html dir="rtl">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>Ls Cyber Security</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تطبيقات محمد | Mohamed Apps</title>
     <style>
-        body { background-color: black; color: white; text-align: center; font-family: sans-serif; }
-        img { width: 300px; border: 3px solid red; margin-top: 50px; }
-        h1 { color: red; }
-        .info { font-size: 20px; margin: 20px; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: #0f172a;
+            color: #f8fafc;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            margin-top: 20px;
+        }
+        header h1 {
+            font-size: 28px;
+            color: #38bdf8;
+            margin-bottom: 10px;
+        }
+        header p {
+            color: #94a3b8;
+            font-size: 15px;
+        }
+        
+        /* زر إضافة تطبيق المميز */
+        .add-app-box {
+            background-color: #1e293b;
+            border: 2px dashed #38bdf8;
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+            width: 100%;
+            max-width: 600px;
+            margin-bottom: 30px;
+        }
+        .upload-btn {
+            background-color: #38bdf8;
+            color: #0f172a;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            display: inline-block;
+            transition: background 0.2s;
+        }
+        .upload-btn:hover {
+            background-color: #0ea5e9;
+        }
+        #fileInput {
+            display: none;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+        }
+        .app-card {
+            background-color: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+        .app-title {
+            font-size: 20px;
+            color: #f1f5f9;
+            margin-bottom: 8px;
+        }
+        .app-desc {
+            font-size: 14px;
+            color: #94a3b8;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #22c55e;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+            transition: background-color 0.2s;
+        }
+        .btn:hover {
+            background-color: #16a34a;
+        }
+        footer {
+            margin-top: auto;
+            text-align: center;
+            color: #64748b;
+            font-size: 13px;
+            padding: 20px;
+        }
     </style>
 </head>
 <body>
-    <img src="https://i.imgur.com/hacker.jpg" alt="Hacker">
-    <h1>أهلاً بكم في موقع Ls</h1>
-    <p class="info">يوجد أدوات أمن سيبراني جميلة وقوية جداً</p>
-    <p class="info">سعر كل أداة 12 Bitcoin</p>
-    <p class="info">للتواصل على واتساب: +963 956 867 055</p>
+
+    <header>
+        <h1>منصة تطبيقات محمد 🚀</h1>
+        <p>هنا أستعرض أفضل التطبيقات التي قمت بتطويرها</p>
+    </header>
+
+    <!-- منطقة زر إضافة تطبيق (تسمح لك باختيار ملف التطبيق من جهازك) -->
+    <div class="add-app-box">
+        <p style="margin-bottom: 15px; color: #cbd5e1; font-size: 14px;">تبي تضيف تطبيق جديد لجهازك؟ اختر ملف التطبيق:</p>
+        <label for="fileInput" class="upload-btn">➕ اضغط لاختيار تطبيق (APK)</label>
+        <input type="file" id="fileInput" accept=".apk" onchange="addNewApp(event)">
+    </div>
+
+    <!-- قائمة التطبيقات -->
+    <div class="container" id="appsContainer">
+        
+        <!-- تطبيق زيادة الفريمات الأساسي -->
+        <div class="app-card">
+            <h2 class="app-title">تطبيق زيادة الفريمات (FPS Booster)</h2>
+            <p class="app-desc">أداة احترافية مخصصة لرفع أداء الألعاب وتقليل التقطيع عبر تحسين معالجة الرسوميات وتنظيف الذاكرة.</p>
+            <a href="#" class="btn">تحميل التطبيق (APK)</a>
+        </div>
+
+    </div>
+
+    <footer>
+        جميع الحقوق محفوظة © 2026 - تم التطوير بواسطة محمد
+    </footer>
+
+    <!-- سكربت برمجية جافاسكريبت لإضافة التطبيق تلقائياً للموقع -->
+    <script>
+        function addNewApp(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const fileName = file.name;
+                const container = document.getElementById('appsContainer');
+                
+                // إنشاء بطاقة جديدة بنفس اللحظة وتنزيلها بالموقع
+                const newCard = document.createElement('div');
+                newCard.className = 'app-card';
+                newCard.innerHTML = `
+                    <h2 class="app-title">${fileName}</h2>
+                    <p class="app-desc">تم إضافته حديثاً من جهازك وجاهز للتحميل والاستخدام الفوري.</p>
+                    <a href="${URL.createObjectURL(file)}" download="${fileName}" class="btn">تحميل التطبيق (APK)</a>
+                `;
+                
+                // إضافة التطبيق الجديد في أعلى القائمة
+                container.prepend(newCard);
+                alert("تم إضافة التطبيق بنجاح للموقع!");
+            }
+        }
+    </script>
+
 </body>
 </html>
